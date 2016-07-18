@@ -47,11 +47,11 @@ class Data:
 
         self.train_X = datatrain['X'].reshape((5000, 3, 96, 96)).transpose(0,1,3,2)
         self.train_X = (self.train_X[:,:,:96,:96] / 300.0).astype('float32')
-        self.train_Y = datatrain['y']
+        self.train_Y = datatrain['y'] - 1
 
         self.test_X = datatest['X'].reshape((8000, 3, 96, 96)).transpose(0,1,3,2)
         self.test_X = (self.test_X[:,:,:96,:96] / 300.0).astype('float32')
-        self.test_Y = datatest['y']
+        self.test_Y = datatest['y'] - 1
 
     '''
         Pick a random location, get sequence of seq_length

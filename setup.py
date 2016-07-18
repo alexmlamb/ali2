@@ -7,5 +7,5 @@ setup(name='simon',
       author='Greg Ward',
       author_email='gward@python.net',
       url='https://www.python.org/sigs/distutils-sig/',
-      packages=['lib', 'data'],
+      packages=['lib', 'data', 'layers'],
      )

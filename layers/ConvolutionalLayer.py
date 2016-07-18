@@ -73,6 +73,13 @@ class ConvPoolLayer(object):
             self.bn_mean = theano.shared(np.zeros(shape = (1,out_channels,1,1)).astype('float32'))
             self.bn_std = theano.shared(np.random.normal(1.0, 0.001, size = (1,out_channels,1,1)).astype('float32'))
 
+        self.params = {'W' : self.W.val, 'b' : self.b.val}
+
+        if self.batch_norm:
+            self.params["mu"] = self.bn_mean
+            self.params["sigma"] = self.bn_std
+
+
 
     def output(self, input):
 
@@ -105,11 +112,6 @@ class ConvPoolLayer(object):
         #    print "USING RESIDUAL"
         #    self.out += input
 
-        self.params = {'W' : self.W.val, 'b' : self.b.val}
-
-        if self.batch_norm:
-            self.params["mu"] = self.bn_mean
-            self.params["sigma"] = self.bn_std
 
         return self.out
 
